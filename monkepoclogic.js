@@ -27,7 +27,7 @@ function selecionarMascota(){
     let selecionmascota=document.getElementById('selecPet')
     selecionmascota.style.display='none'
     let selecioneataque=document.getElementById('selecAttack')
-    selecioneataque.style.display='block'
+    selecioneataque.style.display='flex'
     let inputfixer=document.getElementById('fixer')
     let inputborcho=document.getElementById('borcho')
     let inputterramon=document.getElementById('terramon')
@@ -119,16 +119,29 @@ function revisarvidas(){
 }
 
 function crearMensaje(resultado){
-    let seccionMensajes=document.getElementById('mensaje')
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML='Tu mascota ataco con' +ataqueJugador+', la mascota del enemigo ataco con '+ataqueEnemigo+' - '+resultado
-    seccionMensajes.appendChild(parrafo)
+    let seccionMensajes=document.getElementById('resultado')
+    let ataquejugador=document.getElementById('ataque-jugador')
+    let ataqueenemigo=document.getElementById('ataque-enemigo')
+
+    
+    let nuevoataquejugador=document.createElement('p')
+    let nuevoataqueenemigo=document.createElement('p')
+
+    seccionMensajes.innerHTML=resultado
+    nuevoataquejugador.innerHTML=ataqueJugador
+    nuevoataqueenemigo.innerHTML=ataqueEnemigo
+
+    //let parrafo = document.createElement('p')
+    //parrafo.innerHTML='Tu mascota ataco con' +ataqueJugador+', la mascota del enemigo ataco con '+ataqueEnemigo+' - '+resultado
+    
+    ataquejugador.appendChild(nuevoataquejugador)
+    ataqueenemigo.appendChild(nuevoataqueenemigo)
 }
 function crearMensajeFinal(resultadofinal){
-    let seccionMensajes=document.getElementById('mensaje')
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML=resultadofinal
-    seccionMensajes.appendChild(parrafo)
+    let seccionMensajes=document.getElementById('resultado')
+    
+    seccionMensajes.innerHTML=resultadofinal
+
 
     let botonFuego=document.getElementById('ButtonFire') 
     botonFuego.disabled=true

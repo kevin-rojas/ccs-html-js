@@ -10,43 +10,58 @@
 <body>
     <section id="selecPet">
         <h1 class="titulo">welcom monkepoc 🔥 💧 🌱</h1>
-        <h2>Elige tu mascota</h2>
+        <h2 class="subtitulo">Elige tu mascota</h2>
+        <div class="tarjetas">
+            <label for="fixer" class="tarjeta-de-monkepo">
+                <p>Fixer</p>
+                <img src="/img/fixer.png" alt="Fixer">
+            </label>
+            <input type="radio" name="mascota" id="fixer">
 
-        <label for="fixer">Fixer</label>
-        <input type="radio" name="mascota" id="fixer">
-
-        <label for="borcho">Borcho</label>
-        <input type="radio" name="mascota" id="borcho">
+            <label for="borcho" class="tarjeta-de-monkepo">
+               <p> Borcho </p>
+               <img src="/img/borcho.png" alt="Borcho">
+            </label>
+            <input type="radio" name="mascota" id="borcho">
         
-        <label for="terramon">Terramon</label>
-        <input type="radio" name="mascota" id="terramon">
+            <label for="terramon" class="tarjeta-de-monkepo">
+                <p>Terramon </p>
+                <img src="/img/Terramon.png" alt="Terramon">
+            </label>
+            <input type="radio" name="mascota" id="terramon">
+        </div>
 
-        <button id="Buttonselect">Seleccionar</button>
+       
+
+        <button id="Buttonselect" class="selection">Seleccionar</button>
 
     </section>
 
     <section id="selecAttack">
         <h1 class="titulo">welcom monkepoc 🔥 💧 🌱</h1>
-        <h2>Elige tu ataque</h2>
+        <h2 class="subtitulo">Elige tu ataque</h2>
+        <div>
+            <button id="ButtonFire" class="botonAtaque">Fuego 🔥</button>
+            <button id="ButtonWater" class="botonAtaque">Agua 💧</button>
+            <button id="ButtonEarth" class="botonAtaque">Tierra 🌱</button>
+        </div>
 
-        <p>tu mascota <span id="namePetPlayer"></span> tiene <span id="lifePlayer">3</span> vidas</p>
-        <p>La mascota <span id="namePetEnemy"></span> del enemigo tiene <span id="lifeEnemy">3</span> vidas</p>
-        <p>
-            <button id="ButtonFire">Fuego 🔥</button>
-            <button id="ButtonWater">Agua 💧</button>
-            <button id="ButtonEarth">Tierra 🌱</button>
-        </p>
-    </section>
-
-    <section id="mensaje">
         
-    </section>
-    
-    <section id="reiniciar">
-
-       <button id="ButtonRestart">Reiniciar</button>
-
-    </section>
-   
+        <div>
+            <div id="mensaje">
+              <p id="resultado"> Mucha suerte </p>
+              <div id="reiniciar">
+                <button id="ButtonRestart">Reiniciar</button>
+              </div>
+            </div> 
+            
+        </div> 
+        <div>
+            <div id="ataque-jugador"></div>
+            <div id="ataque-enemigo"></div>
+            <p>tu mascota <span id="namePetPlayer"></span> tiene <span id="lifePlayer">3</span> vidas</p>
+            <p>La mascota <span id="namePetEnemy"></span> del enemigo tiene <span id="lifeEnemy">3</span> vidas</p>
+        </div>
+    </section>  
 </body>
 </html>

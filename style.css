@@ -1,33 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+body{
+   font-family: 'Stint Ultra Condensed', cursive;
+   background-color: #25316D;
+}
+
 .titulo{
     color: lightpink;
     width: 350px;
     height: 50px;
-    background-color: teal;
     border-radius: 0.5em;
 }
-label{
+.subtitulo{
+ color: white;
+}
+/*label{
     color: blueviolet;
     background: antiquewhite;
     width: 310px;
     height: 50px;
     padding: 10px;
     box-sizing: border-box;
-}
+}*/
 
 input{
-    background: brown;
+    display: none;
+    /*background: brown;
     width: 310px;
-    height: 50px;
+    height: 50px;*/
 }
 
-button{
-    background: aqua;
+.selection{
+    color: white;
+    background: transparent;
+    border: 2px solid white;
     width: 310px;
     height: 50px;
+    border-radius: 14px;
+
+    
 }
 #selecPet{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+}
+.tarjeta-de-monkepo{
+    width: 217px;
+    height: 244px;
+    background: #5F6F94;
+    padding: 7px;
+    box-sizing: border-box;
+    margin: 52px;
+    border-radius: 23px;
+    display: flex;
+    color: white;
+    
+}
+.tarjeta-de-monkepo img{
+  width: 80px;
+}
+.tarjetas{
+    display: flex;
+    gap: 10px;
+}
+#selecAttack{
+    flex-direction: column;
+    align-items: center;
+}
+.botonAtaque{
+    border: 2px solid #0E185F;
+   background-color: #42C2FF;
+    width: 154px;
+    height: 79px;
+    border-radius: 44px;
+    margin: 10px;
+}
+#mensaje{
+    background: white;
+    width: 280px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#ButtonRestart{
+    border: transparent;
+    color: #0E185F;
+    background-color: white;
 }
