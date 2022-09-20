@@ -1,13 +1,16 @@
 <html lang="en">
 <head>
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONKEPOC</title>
     <script src="monkepoclogic.js"></script>
     <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
+    
     <section id="selecPet">
         <h1 class="titulo">welcom monkepoc 🔥 💧 🌱</h1>
         <h2 class="subtitulo">Elige tu mascota</h2>
@@ -40,7 +43,7 @@
     <section id="selecAttack">
         <h1 class="titulo">welcom monkepoc 🔥 💧 🌱</h1>
         <h2 class="subtitulo">Elige tu ataque</h2>
-        <div>
+        <div class="tarjetas-ataques">
             <button id="ButtonFire" class="botonAtaque">Fuego 🔥</button>
             <button id="ButtonWater" class="botonAtaque">Agua 💧</button>
             <button id="ButtonEarth" class="botonAtaque">Tierra 🌱</button>
@@ -56,11 +59,17 @@
             </div> 
             
         </div> 
-        <div>
-            <div id="ataque-jugador"></div>
-            <div id="ataque-enemigo"></div>
-            <p>tu mascota <span id="namePetPlayer"></span> tiene <span id="lifePlayer">3</span> vidas</p>
-            <p>La mascota <span id="namePetEnemy"></span> del enemigo tiene <span id="lifeEnemy">3</span> vidas</p>
+        <div class="ataques">
+            <div class="ataque-jugador" >
+                <p id="lifePlayer">3</p>
+                <p id="namePetPlayer"></p>
+                <div id="ataque-jugador"></div>
+            </div>
+            <div class="ataque-enemigo">
+                <p id="lifeEnemy">3</p>
+                <p id="namePetEnemy"></p>
+                <div id="ataque-enemigo"></div>
+            </div>
         </div>
     </section>  
 </body>

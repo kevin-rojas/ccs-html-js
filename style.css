@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+head{
+    position: absolute;
+}
 
 body{
    font-family: 'Stint Ultra Condensed', cursive;
-   background-color: #25316D;
+   background-image: url('https://i0.wp.com/www.marcelopedra.com.ar/blog/wp-content/uploads/2013/10/animated-gifs-of-fighting-game-backgrounds-25.gif?resize=800%2C336&ssl=1');
+   background-color: #FFE4C4;
+   background-attachment: fixed;
+ 
+   background-size: cover;
 }
 
 .titulo{
@@ -25,18 +32,28 @@ body{
 
 input{
     display: none;
-    /*background: brown;
+    background: brown;
     width: 310px;
-    height: 50px;*/
+    height: 50px;
+    position: relative;
+    left: 27px;
+    top: -107px;
+
 }
 
 .selection{
-    color: white;
+    /*color: white;
     background: transparent;
     border: 2px solid white;
     width: 310px;
-    height: 50px;
+    height: 50px;*/
     border-radius: 14px;
+    border: 1px solid #3498db;
+    height: 50px;
+    width: 200px;
+    color: #3498db;
+    font-size: 1.5em;
+    box-shadow: 0 6px 6px rgba(41, 71, 57, 0.6);
 
     
 }
@@ -47,9 +64,9 @@ input{
     justify-content: center;
 }
 .tarjeta-de-monkepo{
-    width: 217px;
-    height: 244px;
-    background: #5F6F94;
+    width: 200px;
+    height: 60px;
+    background: #A9A9A9;
     padding: 7px;
     box-sizing: border-box;
     margin: 52px;
@@ -60,6 +77,9 @@ input{
 }
 .tarjeta-de-monkepo img{
   width: 80px;
+  position: relative;
+  left: 25px;
+  
 }
 .tarjetas{
     display: flex;
@@ -78,7 +98,7 @@ input{
     margin: 10px;
 }
 #mensaje{
-    background: white;
+    background: #386CBB;
     width: 280px;
     padding: 20px;
     margin-top: 20px;
@@ -88,7 +108,46 @@ input{
     flex-direction: column;
 }
 #ButtonRestart{
-    border: transparent;
+   /* border: transparent;
     color: #0E185F;
-    background-color: white;
+    background-color: white;*/
+    border: 1px solid #3498db;
+    height: 50px;
+    width: 200px;
+    color: #3498db;
+    font-size: 1.5em;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 60%);
+}
+p {
+    color: white;
+}
+.ataques{
+    display: grid;
+    grid-template-columns: 100px 100px;
+    
+}
+#lifePlayer,#lifeEnemy{
+ font-size: 32px;
+ margin-bottom: 0px;
+ color: #0E185F;
+}
+.tarjetas-ataques{
+    display: flex;
+    gap: 10px;
+}
+.ataque-jugador,.ataque-enemigo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+@media(max-width: 360px){
+    .tarjetas,.tarjetas-ataques{
+        flex-direction: column;
+    }
+    .botonAtaque{
+      display: flex;
+      justify-content: center;
+    }
+
 }
