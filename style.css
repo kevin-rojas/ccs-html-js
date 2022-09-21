@@ -32,12 +32,11 @@ body{
 
 input{
     display: none;
-    background: brown;
-    width: 310px;
-    height: 50px;
-    position: relative;
-    left: 27px;
-    top: -107px;
+    
+
+}
+input:checked + label{
+    background-color: rgba(136,188,209,.8)
 
 }
 
@@ -64,21 +63,23 @@ input{
     justify-content: center;
 }
 .tarjeta-de-monkepo{
-    width: 200px;
-    height: 60px;
-    background: #A9A9A9;
+    width: 265px;
+    height: 203px;
+    background: #C7F5F5;
     padding: 7px;
     box-sizing: border-box;
     margin: 52px;
     border-radius: 23px;
     display: flex;
     color: white;
+    align-items: center;
     
 }
 .tarjeta-de-monkepo img{
-  width: 80px;
-  position: relative;
-  left: 25px;
+    position: relative;
+    left: 25px;
+    height: 100px;
+    width: 133px;
   
 }
 .tarjetas{
@@ -141,7 +142,7 @@ p {
     align-items: center;
 
 }
-@media(max-width: 360px){
+@media(max-width: 1040px){
     .tarjetas,.tarjetas-ataques{
         flex-direction: column;
     }

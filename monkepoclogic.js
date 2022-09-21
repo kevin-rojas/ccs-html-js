@@ -10,7 +10,9 @@ function iniciarJuego (){
     seccionReiniciar.style.display='none'
 
     let botonSelecionarMascota = document.getElementById('Buttonselect')
-    botonSelecionarMascota.addEventListener('click',selecionarMascota)
+    botonSelecionarMascota.addEventListener('click',selecionarMascota) 
+      
+
 
     let botonFuego=document.getElementById('ButtonFire') 
     botonFuego.addEventListener('click',ataqueFuego)
@@ -32,8 +34,8 @@ function selecionarMascota(){
     let inputborcho=document.getElementById('borcho')
     let inputterramon=document.getElementById('terramon')
     let SpamPetPlayer=document.getElementById('namePetPlayer')
-    
-    if(inputfixer.checked ){
+
+    if(inputfixer.checked ){ 
         SpamPetPlayer.innerHTML='Fixer'
     }else if(inputborcho.checked){
         SpamPetPlayer.innerHTML='Borcho'
