@@ -1,40 +1,93 @@
+const selecioneataque=document.getElementById('selecAttack')
+const seccionReiniciar=document.getElementById('ButtonRestart')
+const botonSelecionarMascota = document.getElementById('Buttonselect')
+const botonFuego=document.getElementById('ButtonFire') 
+const botonAgua=document.getElementById('ButtonWater')
+const botonTierra=document.getElementById('ButtonEarth')
+const botonReniciar=document.getElementById('ButtonRestart')
+const selecionmascota=document.getElementById('selecPet')
+const SpamPetPlayer=document.getElementById('namePetPlayer')
+const vidaJugador=document.getElementById('lifePlayer')
+const vidaEnemigo = document.getElementById('lifeEnemy')
+const seccionMensajes=document.getElementById('resultado')
+const ataquejugador=document.getElementById('ataque-jugador')
+const ataqueenemigo=document.getElementById('ataque-enemigo')
+const contenedorTarjetas=document.getElementById('contenedorTarjetas')
+
+
+let mokepones=[]
+let opcionDeMonkepones
+let inputfixer
+let inputborcho
+let inputterramon
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador=3
 let vidasEnemigo=3
 
+class Mokepon{
+  constructor(nombre,foto,vida){
+    this.nombre=nombre
+    this.foto=foto
+    this.vida=vida
+    this.ataques=[]
+  }
+}
+let fixer=new Mokepon ('Fixer','/img/fixer.png',5)
+let borcho=new Mokepon ('Borcho','/img/borcho.png',5)
+let terramon=new Mokepon ('Terramon','/img/Terramon.png',5)
+
+fixer.ataques.push(
+    {nombre:'🔥',id:'ButtonFire'},
+    {nombre:'🔥',id:'ButtonFire'},
+    {nombre:'🔥',id:'ButtonFire'},
+    {nombre:'💧',id:'ButtonWater'},
+    {nombre:'🌱',id:'ButtonEarth'},
+)
+borcho.ataques.push(
+    {nombre:'💧',id:'ButtonWater'},
+    {nombre:'💧',id:'ButtonWater'},
+    {nombre:'💧',id:'ButtonWater'},
+    {nombre:'🔥',id:'ButtonFire'},
+    {nombre:'🌱',id:'ButtonEarth'},
+)
+terramon.ataques.push(
+    {nombre:'🌱',id:'ButtonEarth'},
+    {nombre:'🌱',id:'ButtonEarth'},
+    {nombre:'🌱',id:'ButtonEarth'},
+    {nombre:'🔥',id:'ButtonFire'},
+    {nombre:'💧',id:'ButtonWater'},
+)
+mokepones.push(fixer,borcho,terramon)
+
 function iniciarJuego (){
-    let selecioneataque=document.getElementById('selecAttack')
     selecioneataque.style.display='none'
-    let seccionReiniciar=document.getElementById('ButtonRestart')
     seccionReiniciar.style.display='none'
+    mokepones.forEach((mokepon)=>{
+        opcionDeMonkepones=`
+        <input type="radio" name="mascota" id=${mokepon.nombre}>
+        <label for=${mokepon.nombre} class="tarjeta-de-monkepo">
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt="Fixer">
+        </label>
+        `
+        contenedorTarjetas.innerHTML+=opcionDeMonkepones
+        inputfixer=document.getElementById('Fixer')
+        inputborcho=document.getElementById('Borcho')
+        inputterramon=document.getElementById('Terramon')
 
-    let botonSelecionarMascota = document.getElementById('Buttonselect')
+    })
+
     botonSelecionarMascota.addEventListener('click',selecionarMascota) 
-      
-
-
-    let botonFuego=document.getElementById('ButtonFire') 
     botonFuego.addEventListener('click',ataqueFuego)
-    let botonAgua=document.getElementById('ButtonWater') 
     botonAgua.addEventListener('click',ataqueAgua)
-    let botonTierra=document.getElementById('ButtonEarth') 
     botonTierra.addEventListener('click',ataqueTierra)
-
-    let botonReniciar=document.getElementById('ButtonRestart')
     botonReniciar.addEventListener('click',reiciarJuego)
 }
 
 function selecionarMascota(){
-    let selecionmascota=document.getElementById('selecPet')
     selecionmascota.style.display='none'
-    let selecioneataque=document.getElementById('selecAttack')
     selecioneataque.style.display='flex'
-    let inputfixer=document.getElementById('fixer')
-    let inputborcho=document.getElementById('borcho')
-    let inputterramon=document.getElementById('terramon')
-    let SpamPetPlayer=document.getElementById('namePetPlayer')
-
     if(inputfixer.checked ){ 
         SpamPetPlayer.innerHTML='Fixer'
     }else if(inputborcho.checked){
@@ -85,8 +138,7 @@ function ataqueAleatorioEnemigo(){
 }
 
 function combate() {
-    let vidaJugador=document.getElementById('lifePlayer')
-    let vidaEnemigo = document.getElementById('lifeEnemy')
+    
 
     if(ataqueJugador==ataqueEnemigo){
         crearMensaje("EMPATE")
@@ -121,11 +173,6 @@ function revisarvidas(){
 }
 
 function crearMensaje(resultado){
-    let seccionMensajes=document.getElementById('resultado')
-    let ataquejugador=document.getElementById('ataque-jugador')
-    let ataqueenemigo=document.getElementById('ataque-enemigo')
-
-    
     let nuevoataquejugador=document.createElement('p')
     let nuevoataqueenemigo=document.createElement('p')
 
@@ -140,19 +187,10 @@ function crearMensaje(resultado){
     ataqueenemigo.appendChild(nuevoataqueenemigo)
 }
 function crearMensajeFinal(resultadofinal){
-    let seccionMensajes=document.getElementById('resultado')
-    
     seccionMensajes.innerHTML=resultadofinal
-
-
-    let botonFuego=document.getElementById('ButtonFire') 
     botonFuego.disabled=true
-    let botonAgua=document.getElementById('ButtonWater') 
     botonAgua.disabled=true
-    let botonTierra=document.getElementById('ButtonEarth') 
     botonTierra.disabled=true
-
-    let seccionReiniciar=document.getElementById('ButtonRestart')
     seccionReiniciar.style.display='block'
 }
 
