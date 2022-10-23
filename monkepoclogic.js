@@ -1,9 +1,6 @@
 const selecioneataque=document.getElementById('selecAttack')
 const seccionReiniciar=document.getElementById('ButtonRestart')
 const botonSelecionarMascota = document.getElementById('Buttonselect')
-const botonFuego=document.getElementById('ButtonFire') 
-const botonAgua=document.getElementById('ButtonWater')
-const botonTierra=document.getElementById('ButtonEarth')
 const botonReniciar=document.getElementById('ButtonRestart')
 const selecionmascota=document.getElementById('selecPet')
 const SpamPetPlayer=document.getElementById('namePetPlayer')
@@ -13,14 +10,21 @@ const seccionMensajes=document.getElementById('resultado')
 const ataquejugador=document.getElementById('ataque-jugador')
 const ataqueenemigo=document.getElementById('ataque-enemigo')
 const contenedorTarjetas=document.getElementById('contenedorTarjetas')
+const spamPetEnemy=document.getElementById('namePetEnemy')
+const contenedorAtaques=document.getElementById('contenedorAtaques')
 
 
 let mokepones=[]
 let opcionDeMonkepones
+let botonFuego
+let botonAgua
+let botonTierra
 let inputfixer
 let inputborcho
 let inputterramon
+let mascotaJugador
 let ataqueJugador
+let ataquesMokepones
 let ataqueEnemigo
 let vidasJugador=3
 let vidasEnemigo=3
@@ -79,9 +83,7 @@ function iniciarJuego (){
     })
 
     botonSelecionarMascota.addEventListener('click',selecionarMascota) 
-    botonFuego.addEventListener('click',ataqueFuego)
-    botonAgua.addEventListener('click',ataqueAgua)
-    botonTierra.addEventListener('click',ataqueTierra)
+    
     botonReniciar.addEventListener('click',reiciarJuego)
 }
 
@@ -89,28 +91,49 @@ function selecionarMascota(){
     selecionmascota.style.display='none'
     selecioneataque.style.display='flex'
     if(inputfixer.checked ){ 
-        SpamPetPlayer.innerHTML='Fixer'
+        SpamPetPlayer.innerHTML=inputfixer.id
+        mascotaJugador=inputfixer.id
     }else if(inputborcho.checked){
-        SpamPetPlayer.innerHTML='Borcho'
+        SpamPetPlayer.innerHTML=inputborcho.id
+        mascotaJugador=inputborcho.id
     }else if(inputterramon.checked){
-        SpamPetPlayer.innerHTML='Terramon'
+        SpamPetPlayer.innerHTML=inputterramon.id
+        mascotaJugador=inputterramon.id
     }else{
         alert("Seleccione una mascota")
-    }   
+    }  
+    extraerAtaque(mascotaJugador) 
     selectPetEnemy()
+}
+function extraerAtaque(mascotaJugador){
+    let ataques
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador==mokepones[i].nombre) {
+            ataques=mokepones[i].ataques
+        }
+        
+    }       
+    mostrarAtques(ataques)
+}
+function mostrarAtques(ataques){
+   ataques.forEach(ataque => {
+    ataquesMokepones=`
+    <button id=${ataque.id} class="botonAtaque">${ataque.nombre}</button>
+    `
+    contenedorAtaques.innerHTML+=ataquesMokepones
+   });
+   botonFuego=document.getElementById('ButtonFire') 
+   botonAgua=document.getElementById('ButtonWater')
+   botonTierra=document.getElementById('ButtonEarth')
+
+   botonFuego.addEventListener('click',ataqueFuego)
+   botonAgua.addEventListener('click',ataqueAgua)
+   botonTierra.addEventListener('click',ataqueTierra)
 }
 
 function selectPetEnemy(){
-    let spamPetEnemy=document.getElementById('namePetEnemy')
-    let mascotaAleatorio=aleatorio(1,3)
-    if(mascotaAleatorio==1){
-        spamPetEnemy.innerHTML='Fixer'
-    }else if(mascotaAleatorio==2){
-        spamPetEnemy.innerHTML='Borcho'
-    }else {
-        spamPetEnemy.innerHTML='Terramon'
-    }
-
+    let mascotaAleatorio=aleatorio(0,mokepones.length-1)
+    spamPetEnemy.innerHTML=mokepones[mascotaAleatorio].nombre
 }
 
 function ataqueFuego(){
