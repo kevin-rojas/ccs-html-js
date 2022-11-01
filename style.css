@@ -92,11 +92,13 @@ input:checked + label{
 }
 .botonAtaque{
     border: 2px solid #0E185F;
-   background-color: #42C2FF;
+    background-color: #42C2FF;
     width: 154px;
     height: 79px;
     border-radius: 44px;
     margin: 10px;
+    align-items: center;
+    font-size: 46px;
 }
 #mensaje{
     background: #386CBB;
@@ -128,9 +130,16 @@ p {
     
 }
 #lifePlayer,#lifeEnemy{
- font-size: 32px;
- margin-bottom: 0px;
- color: #0E185F;
+    font-size: 32px;
+    margin-bottom: 0px;
+    color: #120101;
+    background-color: white;
+    width: 62px;
+    height: 50px;
+    border-radius: 22px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 .tarjetas-ataques{
     display: flex;
@@ -141,6 +150,15 @@ p {
     flex-direction: column;
     align-items: center;
 
+}
+#vermapa{
+    flex-direction:column ;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1em;
+}
+#mapa{
+    border: 2px solid white;
 }
 @media(max-width: 1040px){
     .tarjetas,.tarjetas-ataques{
