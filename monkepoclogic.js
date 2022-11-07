@@ -37,6 +37,10 @@ let victoriasEnemigo=0
 let vidasJugador=3
 let vidasEnemigo=3
 let lienzo=mapa.getContext("2d")
+let intervalo
+let mapaBackground= new Image()
+mapaBackground.src='./img/mapa.jpg'
+
 
 class Mokepon{
   constructor(nombre,foto,vida){
@@ -110,8 +114,7 @@ function selecionarMascota(){
     selecionmascota.style.display='none'
     //selecioneataque.style.display='flex'
     sectionMapa.style.display='flex'
-    intervalo=setInterval(pintarPersonaje,100)
-    
+    iniciarMapa()
     if(inputfixer.checked ){ 
         SpamPetPlayer.innerHTML=inputfixer.id
         mascotaJugador=inputfixer.id
@@ -277,10 +280,17 @@ function reiciarJuego(){
 function aleatorio (min,max){
     return Math.floor(Math.random()*(max-min+1)+min)
 }
-function pintarPersonaje() {
+function pintarCanvas() {
     fixer.x=fixer.x+fixer.velocidadx
     fixer.y=fixer.y+fixer.velocidady
     lienzo.clearRect(0,0,mapa.width,mapa.height)
+    lienzo.drawImage(
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
     lienzo.drawImage(
         fixer.mapaFoto,
         fixer.x,
@@ -304,6 +314,33 @@ function Derecha() {
 function deternerMovimiento() {
     fixer.velocidadx=0
     fixer.velocidady=0
+}
+
+function PresionaUnaTecla (event) {
+   switch (event.key) {
+    case 'ArrowUp':
+        Arriba()
+        break;
+    case 'ArrowDown':
+        Abajo()
+        break;
+    case 'ArrowLeft':
+        Izquierda()
+        break;
+    case 'ArrowRight':
+        Derecha()
+        break; 
+    default:
+        break;
+   } 
+}
+
+function iniciarMapa() {
+    mapa.width=800
+    mapa.height=600
+    intervalo=setInterval(pintarCanvas,100)
+    window.addEventListener('keydown',PresionaUnaTecla)
+    window.addEventListener('keyup',deternerMovimiento) 
 }
 
 window.addEventListener('load',iniciarJuego)
