@@ -17,6 +17,7 @@ const mapa=document.getElementById('mapa')
 
 
 let mokepones=[]
+let mascotaJugadorObj
 let indexAtaqueEnemigo
 let indexAtaqueJugador
 let opcionDeMonkepones
@@ -43,24 +44,24 @@ mapaBackground.src='./img/mapa.jpg'
 
 
 class Mokepon{
-  constructor(nombre,foto,vida){
+  constructor(nombre,foto,vida,fotoMapa,x=10,y=10){
     this.nombre=nombre
     this.foto=foto
     this.vida=vida
     this.ataques=[]
-    this.x=20
-    this.y=30
+    this.x=x
+    this.y=y
     this.ancho=80
     this.alto=80
     this.mapaFoto=new Image()
-    this.mapaFoto.src=foto
+    this.mapaFoto.src=fotoMapa
     this.velocidadx=0
     this.velocidady=0
   }
 }
-let fixer=new Mokepon ('Fixer','/img/fixer.png',5)
-let borcho=new Mokepon ('Borcho','/img/borcho.png',5)
-let terramon=new Mokepon ('Terramon','/img/Terramon.png',5)
+let fixer=new Mokepon ('Fixer','/img/fixer.png',5,'./img/cabeza1.png')
+let borcho=new Mokepon ('Borcho','/img/borcho.png',5,'./img/borcho.png')
+let terramon=new Mokepon ('Terramon','/img/Terramon.png',5,'./img/Terramon.png')
 
 fixer.ataques.push(
     {nombre:'🔥',id:'ButtonFire'},
@@ -113,8 +114,6 @@ function iniciarJuego (){
 function selecionarMascota(){
     selecionmascota.style.display='none'
     //selecioneataque.style.display='flex'
-    sectionMapa.style.display='flex'
-    iniciarMapa()
     if(inputfixer.checked ){ 
         SpamPetPlayer.innerHTML=inputfixer.id
         mascotaJugador=inputfixer.id
@@ -129,6 +128,8 @@ function selecionarMascota(){
     }  
     extraerAtaque(mascotaJugador) 
     selectPetEnemy()
+    sectionMapa.style.display='flex'
+    iniciarMapa()
 }
 function extraerAtaque(mascotaJugador){
     let ataques
@@ -281,8 +282,8 @@ function aleatorio (min,max){
     return Math.floor(Math.random()*(max-min+1)+min)
 }
 function pintarCanvas() {
-    fixer.x=fixer.x+fixer.velocidadx
-    fixer.y=fixer.y+fixer.velocidady
+    mascotaJugadorObj.x=mascotaJugadorObj.x+mascotaJugadorObj.velocidadx
+    mascotaJugadorObj.y=mascotaJugadorObj.y+mascotaJugadorObj.velocidady
     lienzo.clearRect(0,0,mapa.width,mapa.height)
     lienzo.drawImage(
         mapaBackground,
@@ -292,28 +293,28 @@ function pintarCanvas() {
         mapa.height
     )
     lienzo.drawImage(
-        fixer.mapaFoto,
-        fixer.x,
-        fixer.y,
-        fixer.ancho,
-        fixer.alto
+        mascotaJugadorObj.mapaFoto,
+        mascotaJugadorObj.x,
+        mascotaJugadorObj.y,
+        mascotaJugadorObj.ancho,
+        mascotaJugadorObj.alto
     )
 }
 function Arriba() {
-    fixer.velocidady=-5
+    mascotaJugadorObj.velocidady=-5
 }
 function Abajo() {
-    fixer.velocidady=5
+    mascotaJugadorObj.velocidady=5
 }
 function Izquierda() {
-    fixer.velocidadx=-5
+    mascotaJugadorObj.velocidadx=-5
 }
 function Derecha() {
-   fixer.velocidadx=5
+    mascotaJugadorObj.velocidadx=5
 }
 function deternerMovimiento() {
-    fixer.velocidadx=0
-    fixer.velocidady=0
+    mascotaJugadorObj.velocidadx=0
+    mascotaJugadorObj.velocidady=0
 }
 
 function PresionaUnaTecla (event) {
@@ -338,9 +339,19 @@ function PresionaUnaTecla (event) {
 function iniciarMapa() {
     mapa.width=800
     mapa.height=600
+    mascotaJugadorObj=obtenerObjetoMAscota(mascotaJugador)
+    //console.log(mascotaJugadorObj,mascotaJugador)
     intervalo=setInterval(pintarCanvas,100)
     window.addEventListener('keydown',PresionaUnaTecla)
     window.addEventListener('keyup',deternerMovimiento) 
 }
 
+function obtenerObjetoMAscota() {
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador==mokepones[i].nombre) {
+            return mokepones[i]
+        }
+        
+    }     
+}
 window.addEventListener('load',iniciarJuego)
